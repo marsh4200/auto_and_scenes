@@ -18,18 +18,16 @@
     "step": {
       "init": {
         "title": "Auto & Scenes settings",
-        "description": "Choose who can use the panel and what they are allowed to control.",
+        "description": "Choose who can use the panel and what they are allowed to control. Only automations and scenes made in this panel are shown \u2013 anything made in Settings stays hidden from clients.",
         "data": {
           "sidebar_title": "Sidebar title",
           "sidebar_icon": "Sidebar icon",
           "allowed_users": "Users who may use the panel",
-          "own_only": "Non-admins only see items made in this panel",
           "allowed_domains": "Device types users can control",
           "allow_notify": "Allow phone notifications as an action"
         },
         "data_description": {
           "allowed_users": "Leave empty to allow every user. Admins always have access.",
-          "own_only": "Keeps your own installer automations and scenes hidden and safe from changes.",
           "allowed_domains": "Only these device types show up in the panel and can be used in automations and scenes."
         }
       }

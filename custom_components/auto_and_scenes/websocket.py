@@ -25,10 +25,8 @@ from .const import (
     CONF_ALLOW_NOTIFY,
     CONF_ALLOWED_DOMAINS,
     CONF_ALLOWED_USERS,
-    CONF_OWN_ONLY,
     DEFAULT_ALLOW_NOTIFY,
     DEFAULT_ALLOWED_DOMAINS,
-    DEFAULT_OWN_ONLY,
     DOMAIN,
     ID_PREFIX,
     SERVICE_WHITELIST,
@@ -57,7 +55,6 @@ def _settings(hass: HomeAssistant) -> dict[str, Any] | None:
     opts = entry.options
     return {
         "allowed_users": list(opts.get(CONF_ALLOWED_USERS, [])),
-        "own_only": bool(opts.get(CONF_OWN_ONLY, DEFAULT_OWN_ONLY)),
         "allowed_domains": list(opts.get(CONF_ALLOWED_DOMAINS, DEFAULT_ALLOWED_DOMAINS)),
         "allow_notify": bool(opts.get(CONF_ALLOW_NOTIFY, DEFAULT_ALLOW_NOTIFY)),
     }
@@ -86,8 +83,12 @@ def _access(
 
 
 def _can_manage(item_id: str, settings: dict[str, Any], is_admin: bool) -> bool:
-    if is_admin or not settings["own_only"]:
-        return True
+    """Only items created in this panel are ever shown or changed.
+
+    Automations and scenes made in Settings (by the installer) never have the
+    panel's id prefix, so they stay hidden and cannot be edited or deleted
+    from here - not even by an admin using the panel.
+    """
     return item_id.startswith(ID_PREFIX)
 
 
@@ -119,7 +120,6 @@ async def ws_info(
             "version": VERSION,
             "is_admin": connection.user.is_admin,
             "user_name": connection.user.name,
-            "own_only": settings["own_only"],
             "allowed_domains": settings["allowed_domains"],
             "allow_notify": settings["allow_notify"],
             "services": {

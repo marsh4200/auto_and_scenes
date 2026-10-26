@@ -32,7 +32,7 @@ Non-admin users can't use Home Assistant's built-in automation editor. Auto & Sc
 - Only the device types you allow (lights, switches, covers, aircons…) – locks are off by default
 - Only a fixed list of actions per device type (e.g. `light.turn_on`, `cover.open_cover`) – no scripts, shell commands, restarts, etc.
 - No templates anywhere
-- By default clients only see and edit automations/scenes **they made in the panel** (ids start with `aas_`). Your own installer automations stay hidden and untouched.
+- The panel **only ever shows automations and scenes made in the panel** (ids start with `aas_`). Anything you create in **Settings → Automations & Scenes** is always hidden from the panel and can't be changed or deleted from it – for every user, admins included.
 - Optionally limit the panel to specific users
 
 Everything is checked on the server, not just in the app.
@@ -69,7 +69,6 @@ Home Assistant 2024.12 or newer.
 |---|---|---|
 | Sidebar title / icon | Name and icon in the sidebar | Auto & Scenes |
 | Users who may use the panel | Leave empty for everyone. Admins always have access | everyone |
-| Non-admins only see items made in this panel | Hides your installer automations/scenes from clients | on |
 | Device types users can control | Lights, switches, fans, toggle helpers, covers, climate, media players, locks | all except locks |
 | Allow phone notifications | Lets clients add "Send a notification" steps | on |
 
@@ -78,7 +77,7 @@ Home Assistant 2024.12 or newer.
 - Create the client a normal (non-admin) user: **Settings → People → Add person → Allow login**, leave *Administrator* off.
 - Hide entities you don't want clients to pick (Settings → Entities → *Visible* off). Hidden entities don't show in the device picker.
 - Automations made by clients show up in the normal admin automation editor too, so you can always help them out.
-- If an automation is more advanced than the simple editor understands, clients can still switch it on/off and run it, but not edit it.
+- Want to hand a client one of your automations to play with? Build it in the panel instead of in Settings.
 
 ## Troubleshooting
 

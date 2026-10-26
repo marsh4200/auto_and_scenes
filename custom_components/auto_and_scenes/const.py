@@ -3,14 +3,14 @@
 from __future__ import annotations
 
 DOMAIN = "auto_and_scenes"
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 
 PANEL_URL_PATH = "auto-scenes"
 PANEL_COMPONENT = "auto-and-scenes-panel"
 STATIC_URL = "/auto_and_scenes_static"
 
-# Items created from the panel get this id prefix so they can be told apart
-# from the installer's own automations / scenes.
+# Items created from the panel get this id prefix. Only items with this prefix
+# are ever shown in the panel; anything made in Settings stays hidden.
 ID_PREFIX = "aas_"
 
 AUTOMATIONS_FILE = "automations.yaml"
@@ -19,13 +19,11 @@ SCENES_FILE = "scenes.yaml"
 CONF_SIDEBAR_TITLE = "sidebar_title"
 CONF_SIDEBAR_ICON = "sidebar_icon"
 CONF_ALLOWED_USERS = "allowed_users"
-CONF_OWN_ONLY = "own_only"
 CONF_ALLOWED_DOMAINS = "allowed_domains"
 CONF_ALLOW_NOTIFY = "allow_notify"
 
 DEFAULT_SIDEBAR_TITLE = "Auto & Scenes"
 DEFAULT_SIDEBAR_ICON = "mdi:robot-happy-outline"
-DEFAULT_OWN_ONLY = True
 DEFAULT_ALLOW_NOTIFY = True
 
 # Which services a non-admin may use, per entity domain. Anything outside this

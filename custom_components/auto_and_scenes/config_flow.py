@@ -26,12 +26,10 @@ from .const import (
     CONF_ALLOW_NOTIFY,
     CONF_ALLOWED_DOMAINS,
     CONF_ALLOWED_USERS,
-    CONF_OWN_ONLY,
     CONF_SIDEBAR_ICON,
     CONF_SIDEBAR_TITLE,
     DEFAULT_ALLOW_NOTIFY,
     DEFAULT_ALLOWED_DOMAINS,
-    DEFAULT_OWN_ONLY,
     DEFAULT_SIDEBAR_ICON,
     DEFAULT_SIDEBAR_TITLE,
     DOMAIN,
@@ -41,7 +39,6 @@ DEFAULT_OPTIONS = {
     CONF_SIDEBAR_TITLE: DEFAULT_SIDEBAR_TITLE,
     CONF_SIDEBAR_ICON: DEFAULT_SIDEBAR_ICON,
     CONF_ALLOWED_USERS: [],
-    CONF_OWN_ONLY: DEFAULT_OWN_ONLY,
     CONF_ALLOWED_DOMAINS: DEFAULT_ALLOWED_DOMAINS,
     CONF_ALLOW_NOTIFY: DEFAULT_ALLOW_NOTIFY,
 }
@@ -85,6 +82,7 @@ class AutoAndScenesOptionsFlow(OptionsFlow):
             return self.async_create_entry(data=user_input)
 
         opts = {**DEFAULT_OPTIONS, **self.config_entry.options}
+        opts.pop("own_only", None)  # removed setting from v1.0.0
         users = [
             user
             for user in await self.hass.auth.async_get_users()
@@ -111,7 +109,6 @@ class AutoAndScenesOptionsFlow(OptionsFlow):
                         mode=SelectSelectorMode.LIST,
                     )
                 ),
-                vol.Required(CONF_OWN_ONLY, default=opts[CONF_OWN_ONLY]): BooleanSelector(),
                 vol.Required(
                     CONF_ALLOWED_DOMAINS, default=opts[CONF_ALLOWED_DOMAINS]
                 ): SelectSelector(
