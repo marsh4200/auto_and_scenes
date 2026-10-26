@@ -1,0 +1,52 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Auto & Scenes",
+        "description": "Adds a sidebar panel where non-admin users can build their own automations and scenes from their phone.",
+        "data": {
+          "sidebar_title": "Sidebar title"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Auto & Scenes is already set up.",
+      "single_instance_allowed": "Auto & Scenes is already set up."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Auto & Scenes settings",
+        "description": "Choose who can use the panel and what they are allowed to control.",
+        "data": {
+          "sidebar_title": "Sidebar title",
+          "sidebar_icon": "Sidebar icon",
+          "allowed_users": "Users who may use the panel",
+          "own_only": "Non-admins only see items made in this panel",
+          "allowed_domains": "Device types users can control",
+          "allow_notify": "Allow phone notifications as an action"
+        },
+        "data_description": {
+          "allowed_users": "Leave empty to allow every user. Admins always have access.",
+          "own_only": "Keeps your own installer automations and scenes hidden and safe from changes.",
+          "allowed_domains": "Only these device types show up in the panel and can be used in automations and scenes."
+        }
+      }
+    }
+  },
+  "selector": {
+    "domains": {
+      "options": {
+        "light": "Lights",
+        "switch": "Switches",
+        "fan": "Fans",
+        "input_boolean": "Toggle helpers",
+        "cover": "Covers / blinds / garage doors",
+        "climate": "Climate / aircons",
+        "media_player": "Media players",
+        "lock": "Locks"
+      }
+    }
+  }
+}

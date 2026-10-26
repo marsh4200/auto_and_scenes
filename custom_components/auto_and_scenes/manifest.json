@@ -1,0 +1,14 @@
+{
+  "domain": "auto_and_scenes",
+  "name": "Auto & Scenes",
+  "codeowners": ["@marsh4200"],
+  "config_flow": true,
+  "dependencies": ["http", "frontend", "panel_custom", "websocket_api", "automation", "scene"],
+  "documentation": "https://github.com/marsh4200/auto-and-scenes",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/marsh4200/auto-and-scenes/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "1.0.0"
+}
